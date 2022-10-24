@@ -1,28 +1,41 @@
-import React from 'react';
-import logo from '../logo.svg';
+import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
-import { Counter } from '../features/counter/Counter';
-import './App.css';
+import { Trans, useTranslation } from 'react-i18next'
+import './root.css'
 
 function Root() {
+  const { t, i18n } = useTranslation()
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng)
+  }
   return (
-    <div className="App">
+    <div className="root">
       <div className="details">
         <Outlet />
       </div>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
+      <header className="root-header">
+        <span>
+          <button onClick={() => changeLanguage('fr')}>fr</button>
+          <button onClick={() => changeLanguage('en')}>en</button>
+        </span>
+        <Trans i18nKey="title">{t('title')}</Trans>
+        <br />
+        <Trans i18nKey="description.part1">{t('description.part1')}</Trans>
+        <br />
+        <Trans i18nKey="description.part2">{t('description.part2')}</Trans>
+        <br />
         <p>
-          <Link to={"/children"} className="testLink">Route for embed children</Link>
+          <Link to={'/children'} className="testLink">
+            Route for embed children
+          </Link>
           <br />
-          <Link to={"/other"}>Another Route</Link>
+          <Link to={'/other'}>Another Route</Link>
           <br />
-          <Link to={"/error"}>Error Route</Link>
+          <Link to={'/error'}>Error Route</Link>
         </p>
       </header>
     </div>
-  );
+  )
 }
 
-export default Root;
+export default Root

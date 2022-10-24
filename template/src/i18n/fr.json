@@ -1,0 +1,7 @@
+{
+    "title": "Bienvenue dans React avec react-i18next",
+    "description": {
+      "part1": "Pour commencer, modifier src/index.jsx et sauvegarder pour actualiser.",
+      "part2": "Changez de langue entre l'anglais et le français en utilisant les boutons ci-dessus."
+    }
+  }
