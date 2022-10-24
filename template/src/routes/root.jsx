@@ -10,30 +10,37 @@ function Root() {
   }
   return (
     <div className="root">
-      <div className="details">
-        <Outlet />
-      </div>
       <header className="root-header">
+        <ul>
+          <li>
+            <Link to={'/children'} className="testLink">
+              Route for embed children
+            </Link>
+          </li>
+          <li>
+            <Link to={'/other'}>Another Route</Link>
+          </li>
+          <li>
+            <Link to={'/error'}>Error Route</Link>
+          </li>
+        </ul>
+      </header>
+      <section id="main-container">
         <span>
           <button onClick={() => changeLanguage('fr')}>fr</button>
           <button onClick={() => changeLanguage('en')}>en</button>
         </span>
+        <br />
         <Trans i18nKey="title">{t('title')}</Trans>
         <br />
         <Trans i18nKey="description.part1">{t('description.part1')}</Trans>
         <br />
         <Trans i18nKey="description.part2">{t('description.part2')}</Trans>
         <br />
-        <p>
-          <Link to={'/children'} className="testLink">
-            Route for embed children
-          </Link>
-          <br />
-          <Link to={'/other'}>Another Route</Link>
-          <br />
-          <Link to={'/error'}>Error Route</Link>
-        </p>
-      </header>
+        <div className="details">
+          <Outlet />
+        </div>
+      </section>
     </div>
   )
 }
